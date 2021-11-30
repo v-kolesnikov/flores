@@ -6,6 +6,7 @@ config :flores, Flores.Repo,
   password: "postgres",
   database: "flores_dev",
   hostname: "localhost",
+  after_connect: {Postgrex, :query!, ["SET search_path = bookings, public ;", []]},
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

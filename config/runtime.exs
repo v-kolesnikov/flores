@@ -15,10 +15,9 @@ if config_env() == :prod do
       """
 
   config :florinda, Florinda.Repo,
-    # ssl: true,
+    ssl: true,
     # socket_options: [:inet6],
     url: database_url,
-    after_connect: {Postgrex, :query!, ["SET search_path = bookings, public ;", []]},
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
   # The secret key base is used to sign/encrypt cookies and other secrets.

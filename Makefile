@@ -1,5 +1,8 @@
 db:
-	psql -h localhost -U postgres
+	exec psql -h localhost -U postgres
+
+console:
+	exec iex -S mix
 
 setup:
 	mix ecto.create

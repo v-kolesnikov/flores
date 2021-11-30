@@ -65,7 +65,7 @@ defmodule Flores.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": [
-        "cmd --cd assets npm run deploy",
+        "cmd --cd assets npm run bundle",
         "esbuild default --minify",
         "phx.digest"
       ]

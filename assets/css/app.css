@@ -5,3 +5,7 @@
 body {
   @apply antialiased;
 }
+
+tbody.td-p0 td {
+  @apply p-0;
+}

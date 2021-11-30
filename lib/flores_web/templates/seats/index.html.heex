@@ -1,0 +1,22 @@
+<section class="px-5">
+  <h1 class="py-3 text-3xl text-dark font-bold">Seats</h1>
+
+  <table class="w-full">
+    <thead class="text-xs font-medium uppercase border-b">
+      <tr>
+        <td class="p-2">aircraft</td>
+        <td class="p-2">seat no</td>
+        <td class="p-2">fare conditions</td>
+      </tr>
+    </thead>
+    <tbody class="td-p0 divide-y border-b">
+      <%= for seat <- @seats do %>
+        <tr class="text-sm hover:bg-gray-50">
+          <td><a class="block p-2 font-medium" href="#"><%= seat.aircraft_code %></a></td>
+          <td><a class="block p-2" href="#"><%= seat.seat_no %></a></td>
+          <td><a class="block p-2" href="#"><%= seat.fare_conditions %></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

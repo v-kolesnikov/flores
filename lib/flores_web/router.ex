@@ -18,6 +18,8 @@ defmodule FloresWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/aircrafts", AircraftsController, :index
+    get "/seats", SeatsController, :index
   end
 
   # Other scopes may use custom stacks.

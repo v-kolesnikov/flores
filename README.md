@@ -1,4 +1,6 @@
-# Flores
+# Florinda
+
+Example Elixir web-app 
 
 To start your Phoenix server:
 

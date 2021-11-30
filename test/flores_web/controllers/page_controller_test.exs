@@ -1,5 +1,5 @@
-defmodule FloresWeb.PageControllerTest do
-  use FloresWeb.ConnCase
+defmodule FlorindaWeb.PageControllerTest do
+  use FlorindaWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

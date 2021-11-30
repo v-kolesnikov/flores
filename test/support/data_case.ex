@@ -1,4 +1,4 @@
-defmodule Flores.DataCase do
+defmodule Florinda.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule Flores.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Flores.DataCase, async: true`, although
+  by setting `use Florinda.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,17 +18,17 @@ defmodule Flores.DataCase do
 
   using do
     quote do
-      alias Flores.Repo
+      alias Florinda.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Flores.DataCase
+      import Florinda.DataCase
     end
   end
 
   setup tags do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Flores.Repo, shared: not tags[:async])
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Florinda.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     :ok
   end

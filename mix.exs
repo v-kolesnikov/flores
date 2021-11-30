@@ -1,9 +1,9 @@
-defmodule Flores.MixProject do
+defmodule Florinda.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :flores,
+      app: :florinda,
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Flores.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Flores.Application, []},
+      mod: {Florinda.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

@@ -1,3 +1,3 @@
-defmodule FloresWeb.PageViewTest do
-  use FloresWeb.ConnCase, async: true
+defmodule FlorindaWeb.PageViewTest do
+  use FlorindaWeb.ConnCase, async: true
 end

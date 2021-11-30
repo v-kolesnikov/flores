@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :flores, Flores.Repo,
+config :florinda, Florinda.Repo,
   username: "postgres",
   password: "postgres",
   database: "demo",
@@ -16,7 +16,7 @@ config :flores, Flores.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with esbuild to bundle .js and .css sources.
-config :flores, FloresWeb.Endpoint,
+config :florinda, FlorindaWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -62,13 +62,13 @@ config :flores, FloresWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :flores, FloresWeb.Endpoint,
+config :florinda, FlorindaWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/flores_web/(live|views)/.*(ex)$",
-      ~r"lib/flores_web/templates/.*(eex)$"
+      ~r"lib/florinda_web/(live|views)/.*(ex)$",
+      ~r"lib/florinda_web/templates/.*(eex)$"
     ]
   ]
 

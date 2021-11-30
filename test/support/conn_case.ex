@@ -1,4 +1,4 @@
-defmodule FloresWeb.ConnCase do
+defmodule FlorindaWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule FloresWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use FloresWeb.ConnCase, async: true`, although
+  by setting `use FlorindaWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,17 +22,17 @@ defmodule FloresWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import FloresWeb.ConnCase
+      import FlorindaWeb.ConnCase
 
-      alias FloresWeb.Router.Helpers, as: Routes
+      alias FlorindaWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint FloresWeb.Endpoint
+      @endpoint FlorindaWeb.Endpoint
     end
   end
 
   setup tags do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Flores.Repo, shared: not tags[:async])
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Florinda.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end

@@ -7,14 +7,14 @@
 # General application configuration
 import Config
 
-config :flores,
-  ecto_repos: [Flores.Repo]
+config :florinda,
+  ecto_repos: [Florinda.Repo]
 
 # Configures the endpoint
-config :flores, FloresWeb.Endpoint,
+config :florinda, FlorindaWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: FloresWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Flores.PubSub,
+  render_errors: [view: FlorindaWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Florinda.PubSub,
   live_view: [signing_salt: "oO3r7B6S"]
 
 # Configures the mailer
@@ -24,7 +24,7 @@ config :flores, FloresWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :flores, Flores.Mailer, adapter: Swoosh.Adapters.Local
+config :florinda, Florinda.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

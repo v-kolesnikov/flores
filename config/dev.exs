@@ -4,7 +4,7 @@ import Config
 config :flores, Flores.Repo,
   username: "postgres",
   password: "postgres",
-  database: "flores_dev",
+  database: "demo",
   hostname: "localhost",
   after_connect: {Postgrex, :query!, ["SET search_path = bookings, public ;", []]},
   show_sensitive_data_on_connection_error: true,
@@ -26,7 +26,15 @@ config :flores, FloresWeb.Endpoint,
   secret_key_base: "qdieh+JvlzOyxdZodfkI2H4W4t5voDrVO5OSTeCQOidgx5cuYBDv2XUrJMa5m7Am",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    npx: [
+      "tailwindcss",
+      "--input=css/app.css",
+      "--output=../priv/static/assets/app.css",
+      "--postcss",
+      "--watch",
+      cd: Path.expand("../assets", __DIR__)
+    ]
   ]
 
 # ## SSL Support

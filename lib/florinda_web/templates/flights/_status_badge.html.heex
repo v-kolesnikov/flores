@@ -1,0 +1,16 @@
+<div class="text-xs font-medium w-min h-full">
+  <%= case @status do %>
+    <% "Arrived" -> %>
+      <div class="px-1.5 py-px rounded bg-green-200">Arrived</div>
+    <% "Scheduled" -> %>
+      <div class="px-1.5 py-px rounded bg-yellow-100">Scheduled</div>
+    <% "On Time" -> %>
+      <div class="px-1.5 py-px rounded bg-blue-200">On&nbsp;Time</div>
+    <% "Delayed" -> %>
+      <div class="px-1.5 py-px rounded bg-red-200">Delayed</div>
+    <% "Cancelled" -> %>
+      <div class="px-1.5 py-px rounded bg-gray-200">Delayed</div>
+    <% _ -> %>
+      <div class="px-1.5 py-px rounded"><%= @status %></div>
+  <% end %>
+</div>

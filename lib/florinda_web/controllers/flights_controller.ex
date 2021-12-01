@@ -7,12 +7,12 @@ defmodule FlorindaWeb.FlightsController do
   import Ecto.Query
 
   def index(conn, params) do
-    query = from(t in Flight, order_by: [desc: t.flight_no])
+    query = from(t in Flight, order_by: [desc: t.flight_id])
     page = Repo.paginate(
       query,
       before: params |> Map.get("ending_before"),
       after: params |> Map.get("starting_after"),
-      cursor_fields: [:flight_no],
+      cursor_fields: [:flight_id],
       sort_direction: :desc,
       limit: 20
     )

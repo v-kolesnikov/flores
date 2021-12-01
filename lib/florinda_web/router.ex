@@ -20,6 +20,7 @@ defmodule FlorindaWeb.Router do
     get "/", Redirect, to: "/flights"
     get "/aircrafts", AircraftsController, :index
     get "/airports", AirportsController, :index
+    get "/airports/:id", AirportsController, :show
     get "/bookings", BookingsController, :index
     get "/flights", FlightsController, :index
     get "/flights/:id", FlightsController, :show

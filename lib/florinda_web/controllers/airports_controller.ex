@@ -18,4 +18,9 @@ defmodule FlorindaWeb.AirportsController do
     )
     render(conn, "index.html", page: page)
   end
+
+  def show(conn, %{"id" => id}) do
+    airport = Repo.get Airport, String.upcase(id)
+    render(conn, "show.html", airport: airport)
+  end
 end

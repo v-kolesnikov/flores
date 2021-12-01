@@ -13,10 +13,11 @@
     <tbody class="td-p0 divide-y border-b">
       <%= for airport <- @page.entries do %>
         <tr class="text-sm hover:bg-gray-50">
-          <td><a class="block p-2" href="#"><span class="font-medium"><%= airport.airport_code %></span></a></td>
-          <td><a class="block p-2" href="#"><%= airport.airport_name %></a></td>
-          <td><a class="block p-2" href="#"><%= airport.city %></a></td>
-          <td><a class="block p-2" href="#"><%= airport.timezone %></a></td>
+          <% airport_path = Routes.airports_path(@conn, :show, airport.airport_code) %>
+          <td><a class="block p-2" href={airport_path}><span class="font-medium"><%= airport.airport_code %></span></a></td>
+          <td><a class="block p-2" href={airport_path}><%= airport.airport_name %></a></td>
+          <td><a class="block p-2" href={airport_path}><%= airport.city %></a></td>
+          <td><a class="block p-2" href={airport_path}><%= airport.timezone %></a></td>
         </tr>
       <% end %>
     </tbody>

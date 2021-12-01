@@ -1,0 +1,41 @@
+<div class="px-5">
+  <div class="divide-y">
+    <div class="py-3 flex flex-wrap gap-x-2 items-baseline truncate">
+      <div class="text-3xl font-bold truncate"><%= @airport.airport_code %> - <%= @airport.airport_name %></div>
+    </div>
+
+    <div class="py-4 flex flex-col sm:flex-row gap-y-2 sm:divide-x">
+      <div class="sm:pr-5">
+        <div class="py-0.5 text-sm text-gray-500">City</div>
+        <div class="py-0.5 text-sm"><%= @airport.city %></div>
+      </div>
+
+      <div class="sm:px-5">
+        <div class="py-0.5 text-sm text-gray-500">Timezone</div>
+        <div class="py-0.5 text-sm"><%= @airport.timezone %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-2 divide-y">
+    <div class="py-3 text-xl font-bold">Airport details</div>
+    <div class="py-3 space-y-2 break-words">
+      <div class="flex flex-col sm:flex-row gap-y-1">
+        <div class="text-sm text-gray-500 w-44">Code</div>
+        <div class="text-sm"><%= @airport.airport_code %></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-y-1">
+        <div class="text-sm text-gray-500 w-44">Name</div>
+        <div class="text-sm"><%= @airport.airport_name %></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-y-1">
+        <div class="text-sm text-gray-500 w-44">City</div>
+        <div class="text-sm"><%= @airport.city %></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-y-1">
+        <div class="text-sm text-gray-500 w-44">Timezone</div>
+        <div class="text-sm"><%= @airport.timezone %></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<section class="px-5">
+  <h1 class="py-3 text-3xl font-bold">Flights</h1>
+
+  <table class="w-full">
+    <thead class="text-xs font-medium uppercase border-b">
+      <tr>
+        <td class="p-2">no</td>
+        <td class="p-2">Departure</td>
+        <td class="p-2">Arrival</td>
+        <td class="p-2">scheduled departure</td>
+        <td class="p-2">sheduled arrival</td>
+        <td class="p-2">status</td>
+        <td class="p-2">actual departure</td>
+        <td class="p-2">actual arrival</td>
+      </tr>
+    </thead>
+    <tbody class="td-p0 divide-y border-b">
+      <%= for flight <- @page.entries do %>
+        <tr class="text-sm hover:bg-gray-50">
+          <% flight_path = Routes.flights_path(@conn, :show, flight.flight_id) %>
+          <td><a class="block p-2" href={flight_path}><span class="font-medium"><%= flight.flight_no %></span></a></td>
+          <td><a class="block p-2" href={flight_path}><span class=""><%= flight.departure_airport %></span></a></td>
+          <td><a class="block p-2" href={flight_path}><span class=""><%= flight.arrival_airport %></span></a></td>
+          <td><a class="block p-2" href={flight_path}><span class=""><%= flight.scheduled_departure %></span></a></td>
+          <td><a class="block p-2" href={flight_path}><span class=""><%= flight.scheduled_arrival %></span></a></td>
+          <td><a class="block p-2" href={flight_path}><%= render "_status_badge.html", status: flight.status %></a></td>
+          <td><a class="block p-2" href={flight_path}><span class=""><%= flight.actual_departure || raw "&mdash;" %></span></a></td>
+          <td><a class="block p-2" href={flight_path}><span class=""><%= flight.actual_arrival || raw "&mdash;" %></span></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render(FlorindaCtl.SharedView, "pagination.html", conn: @conn, page: @page) %>
+</section>

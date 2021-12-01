@@ -11,11 +11,11 @@ defmodule Florinda.Application do
       # Start the Ecto repository
       Florinda.Repo,
       # Start the Telemetry supervisor
-      FlorindaWeb.Telemetry,
+      FlorindaCtl.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Florinda.PubSub},
       # Start the Endpoint (http/https)
-      FlorindaWeb.Endpoint
+      FlorindaCtl.Endpoint
       # Start a worker by calling: Florinda.Worker.start_link(arg)
       # {Florinda.Worker, arg}
     ]
@@ -30,7 +30,7 @@ defmodule Florinda.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    FlorindaWeb.Endpoint.config_change(changed, removed)
+    FlorindaCtl.Endpoint.config_change(changed, removed)
     :ok
   end
 end

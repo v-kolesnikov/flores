@@ -1,3 +1,3 @@
-defmodule FlorindaWeb.PageViewTest do
-  use FlorindaWeb.ConnCase, async: true
+defmodule FlorindaCtl.PageViewTest do
+  use FlorindaCtl.ConnCase, async: true
 end

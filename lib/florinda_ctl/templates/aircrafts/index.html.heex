@@ -1,0 +1,24 @@
+<section class="px-5">
+  <h1 class="py-3 text-3xl font-bold">Aircrafts</h1>
+
+  <table class="w-full">
+    <thead class="text-xs font-medium uppercase border-b">
+      <tr>
+        <td class="p-2">code</td>
+        <td class="p-2">model</td>
+        <td class="p-2">range</td>
+      </tr>
+    </thead>
+    <tbody class="td-p0 divide-y border-b">
+      <%= for aircraft <- @page.entries do %>
+        <% seats_path = Routes.seats_path(@conn, :index, %{aircraft: aircraft.aircraft_code}) %>
+        <tr class="text-sm hover:bg-gray-50">
+          <td><a class="block p-2" href={seats_path}><span class="font-medium"><%= aircraft.aircraft_code %></span></a></td>
+          <td><a class="block p-2" href={seats_path}><%= aircraft.model %></a></td>
+          <td><a class="block p-2" href={seats_path}><%= aircraft.range %></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render(FlorindaCtl.SharedView, "pagination.html", conn: @conn, page: @page) %>
+</section>

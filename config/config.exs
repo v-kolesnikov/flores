@@ -11,9 +11,9 @@ config :florinda,
   ecto_repos: [Florinda.Repo]
 
 # Configures the endpoint
-config :florinda, FlorindaWeb.Endpoint,
+config :florinda, FlorindaCtl.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: FlorindaWeb.ErrorView, accepts: ~w(html json), layout: false],
+  render_errors: [view: FlorindaCtl.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Florinda.PubSub,
   live_view: [signing_salt: "oO3r7B6S"]
 

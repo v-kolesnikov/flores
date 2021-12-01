@@ -1,5 +1,7 @@
 # Florinda
 
+![image](https://user-images.githubusercontent.com/6506296/144153869-93a5cc63-9f11-4000-b278-dfcf9d97a093.png)
+
 Example Elixir web-app 
 
 To start your Phoenix server:

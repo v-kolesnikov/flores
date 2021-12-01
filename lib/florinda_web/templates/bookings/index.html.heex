@@ -1,0 +1,23 @@
+<section class="px-5">
+  <h1 class="py-3 text-3xl text-dark font-bold">Bookings</h1>
+
+  <table class="w-full">
+    <thead class="text-xs font-medium uppercase border-b">
+      <tr>
+        <td class="p-2">ref</td>
+        <td class="p-2">date</td>
+        <td class="p-2">amount</td>
+      </tr>
+    </thead>
+    <tbody class="td-p0 divide-y border-b">
+      <%= for booking <- @page.entries do %>
+        <tr class="text-sm hover:bg-gray-50">
+          <td><a class="block p-2" href="#"><span class="font-medium"><%= booking.book_ref %></span></a></td>
+          <td><a class="block p-2" href="#"><%= booking.book_date %></a></td>
+          <td><a class="block p-2" href="#"><%= booking.total_amount %></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render(FlorindaWeb.SharedView, "pagination.html", conn: @conn, page: @page) %>
+</section>

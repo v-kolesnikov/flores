@@ -1,0 +1,23 @@
+<section class="px-5">
+  <h1 class="py-3 text-3xl text-dark font-bold">Airports</h1>
+
+  <table class="w-full">
+    <thead class="text-xs font-medium uppercase border-b">
+      <tr>
+        <td class="p-2">airport</td>
+        <td class="p-2">city</td>
+        <td class="p-2">timezone</td>
+      </tr>
+    </thead>
+    <tbody class="td-p0 divide-y border-b">
+      <%= for airport <- @page.entries do %>
+        <tr class="text-sm hover:bg-gray-50">
+          <td><a class="block p-2" href="#"><%= airport.airport_name %></a></td>
+          <td><a class="block p-2" href="#"><%= airport.city %></a></td>
+          <td><a class="block p-2" href="#"><%= airport.timezone %></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render(FlorindaWeb.SharedView, "pagination.html", conn: @conn, page: @page) %>
+</section>

@@ -1,18 +1,18 @@
-defmodule FlorindaWeb.AircraftsController do
+defmodule FlorindaWeb.AirportsController do
   use FlorindaWeb, :controller
 
   alias Florinda.{Repo}
-  alias Florinda.Models.{Aircraft}
+  alias Florinda.Models.{Airport}
 
   import Ecto.Query
 
   def index(conn, params) do
-    query = from(t in Aircraft, order_by: [asc: t.aircraft_code])
+    query = from(t in Airport, order_by: [asc: t.airport_name])
     page = Repo.paginate(
       query,
       before: params |> Map.get("ending_before"),
       after: params |> Map.get("starting_after"),
-      cursor_fields: [:aircraft_code],
+      cursor_fields: [:airport_name],
       sort_direction: :asc,
       limit: 20
     )

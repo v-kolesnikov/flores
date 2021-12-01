@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody class="td-p0 divide-y border-b">
-      <%= for aircraft <- @aircrafts do %>
+      <%= for aircraft <- @page.entries do %>
         <% seats_path = Routes.seats_path(@conn, :index, %{aircraft: aircraft.aircraft_code}) %>
         <tr class="text-sm hover:bg-gray-50">
           <td><a class="block p-2" href={seats_path}><span class="font-medium"><%= aircraft.aircraft_code %></span></a></td>
@@ -20,4 +20,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= render(FlorindaWeb.SharedView, "pagination.html", conn: @conn, page: @page) %>
 </section>

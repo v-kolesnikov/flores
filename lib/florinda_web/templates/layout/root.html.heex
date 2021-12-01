@@ -15,9 +15,9 @@
         <div class="sticky top-0 h-screen bg-gray-50 w-80">
           <ul class="pt-10 px-6 text-sm">
             <li><a href={Routes.aircrafts_path(@conn, :index)} class="block p-1 hover:underline">Aircrafts</a></li>
-            <li><a href={} class="block p-1 hover:underline">Airports</a></li>
-            <li><a href={} class="block p-1 hover:underline">Bookings</a></li>
-            <li><a href={} class="block p-1 hover:underline">Flights</a></li>
+            <li><a href={Routes.airports_path(@conn, :index)} class="block p-1 hover:underline">Airports</a></li>
+            <li><a href={Routes.bookings_path(@conn, :index)} class="block p-1 hover:underline">Bookings</a></li>
+            <li><a href={Routes.flights_path(@conn, :index)} class="block p-1 hover:underline">Flights</a></li>
           </ul>
         </div>
       </nav>

@@ -21,7 +21,10 @@
           </ul>
         </div>
       </nav>
-      <%= @inner_content %>
+      <div class="w-full">
+        <%= render "_search.html", conn: @conn %>
+        <%= @inner_content %>
+      </div>
     </div>
   </body>
 </html>

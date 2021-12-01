@@ -22,6 +22,7 @@ defmodule FlorindaWeb.Router do
     get "/airports", AirportsController, :index
     get "/bookings", BookingsController, :index
     get "/flights", FlightsController, :index
+    get "/flights/:id", FlightsController, :show
     get "/seats", SeatsController, :index
   end
 

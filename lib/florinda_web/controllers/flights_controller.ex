@@ -18,4 +18,9 @@ defmodule FlorindaWeb.FlightsController do
     )
     render(conn, "index.html", page: page)
   end
+
+  def show(conn, %{"id" => id}) do
+    flight = Repo.get Flight, id
+    render(conn, "show.html", flight: flight)
+  end
 end

@@ -17,7 +17,7 @@ defmodule FlorindaWeb.Router do
   scope "/", FlorindaWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", Redirect, to: "/flights"
     get "/aircrafts", AircraftsController, :index
     get "/airports", AirportsController, :index
     get "/bookings", BookingsController, :index

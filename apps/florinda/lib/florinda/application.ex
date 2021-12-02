@@ -10,12 +10,8 @@ defmodule Florinda.Application do
     children = [
       # Start the Ecto repository
       Florinda.Repo,
-      # Start the Telemetry supervisor
-      FlorindaCtl.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Florinda.PubSub},
-      # Start the Endpoint (http/https)
-      FlorindaCtl.Endpoint
       # Start a worker by calling: Florinda.Worker.start_link(arg)
       # {Florinda.Worker, arg}
     ]
@@ -24,13 +20,5 @@ defmodule Florinda.Application do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Florinda.Supervisor]
     Supervisor.start_link(children, opts)
-  end
-
-  # Tell Phoenix to update the endpoint configuration
-  # whenever the application is updated.
-  @impl true
-  def config_change(changed, _new, removed) do
-    FlorindaCtl.Endpoint.config_change(changed, removed)
-    :ok
   end
 end

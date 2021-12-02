@@ -23,7 +23,7 @@ end
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :florinda, FlorindaCtl.Endpoint,
+config :florinda_ctl, FlorindaCtl.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "vGuew59o8srVboqoyjY1LHfOlQ34H6pjmEzbCVxkor4H9r128nv8JO53rruPfMyZ",
   server: false

@@ -20,5 +20,5 @@ defmodule FlorindaCtl.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :florinda
+  use Gettext, otp_app: :florinda_ctl
 end

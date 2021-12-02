@@ -10,13 +10,6 @@ import Config
 config :florinda,
   ecto_repos: [Florinda.Repo]
 
-# Configures the endpoint
-config :florinda, FlorindaCtl.Endpoint,
-  url: [host: "localhost"],
-  render_errors: [view: FlorindaCtl.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Florinda.PubSub,
-  live_view: [signing_salt: "oO3r7B6S"]
-
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
@@ -29,13 +22,24 @@ config :florinda, Florinda.Mailer, adapter: Swoosh.Adapters.Local
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 
+config :florinda_ctl,
+  ecto_repos: [Florinda.Repo],
+  generators: [context_app: :florinda]
+
+# Configures the endpoint
+config :florinda_ctl, FlorindaCtl.Endpoint,
+  url: [host: "localhost"],
+  render_errors: [view: FlorindaCtl.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Florinda.PubSub,
+  live_view: [signing_salt: "oO3r7B6S"]
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.12.18",
   default: [
     args:
       ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../assets", __DIR__),
+    cd: Path.expand("../apps/florinda_ctl/assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 

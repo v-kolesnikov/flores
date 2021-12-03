@@ -17,7 +17,7 @@ defmodule FlorindaCtl.Router do
   scope "/", FlorindaCtl do
     pipe_through :browser
 
-    get "/", Redirect, to: "/flights"
+    get "/", PageController, :index
     get "/aircrafts", AircraftsController, :index
     get "/airports", AirportsController, :index
     get "/airports/:id", AirportsController, :show

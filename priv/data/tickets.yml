@@ -1,0 +1,43 @@
+tickets:
+  top:
+    - city: Санкт-Петербург
+      country: Россия
+      date_from: 7 дек
+      date_to: 14 дек
+      duration: 7 дней
+      price: 2 438 ₽
+      description: Культурная столица России, северная Венеция, детище Петра — так часто называют Санкт-Петербург, второй по величине город нашей необъятной с населением в 4,8 млн человек...
+      image: https://photo.hotellook.com/static/cities/1280x540/LED.auto
+    - city: Санкт-Петербург
+      country: Россия
+      date_from: 7 дек
+      date_to: 14 дек
+      duration: 7 дней
+      price: 2 438 ₽
+      description: Культурная столица России, северная Венеция, детище Петра — так часто называют Санкт-Петербург, второй по величине город нашей необъятной с населением в 4,8 млн человек...
+      image: https://photo.hotellook.com/static/cities/1280x540/LED.auto
+  all:
+    - city: Набережные Челны (Нижнекамск)
+      country: Россия
+      date_from: 19 янв
+      date_to: 26 янв
+      duration: 7 дней
+      price: 4 198 ₽
+      description: Набережные Челны — второй по величине город Татарстана, индустриальный гигант, в котором находится известный каждому россиянину завод «КамАЗ»,...
+      image: https://photo.hotellook.com/static/cities/610x500/NBC.auto
+    - city: Казань
+      country: Россия
+      date_from: 18 янв
+      date_to: 25 янв
+      duration: 7 дней
+      price: 3 998 ₽
+      description: Казань не раз попадала на первые места в списках городов России, обязательных к посещению туристами — более того, город носит негласное звание третьей столицы России.
+      image: https://photo.hotellook.com/static/cities/610x500/KZN.auto
+    - city: Волгоград
+      country: Россия
+      date_from: 12 дек
+      date_to: 18 дек
+      duration: 6 дней
+      price: 4 598 ₽
+      description: В низовьях великой русской реки Волги расположился город-герой Волгоград. Его история неразрывно связана с великой битвой и славной победой нашего народа. Вплоть до 6...
+      image: https://photo.hotellook.com/static/cities/610x500/VOG.auto

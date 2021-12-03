@@ -50,6 +50,7 @@ defmodule Florinda.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:paginator, "~> 1.0.4"},
+      {:yaml_elixir, "~> 2.8.0"},
     ]
   end
 

@@ -1,3 +1,104 @@
-<section class="px-5">
-  <h1 class="py-3 text-3xl font-bold">Florinda Control Panel</h1>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+  </head>
+
+  <body class="bg-[#f2f4fd] antialiased">
+    <main>
+      <div class="w-[65.07vw] h-full mx-auto flex flex-col space-y-8 py-8">
+        <div class="p-10 bg-[#d7ebfa] rounded-xl">
+          <div class="space-y-6">
+            <div class="flex justify-between items-baseline">
+              <h1 class="text-4xl text-[#045EFF] font-extrabold uppercase">Ну, полетели!</h1>
+              <div class="flex space-x-2 p-3 bg-white rounded-xl text-[#045EFF]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                <p class="font-bold">Москва</p>
+              </div>
+            </div>
+            <p class="text-4xl font-semibold">Дешёвые авиабилеты<br/>из Москвы куда угодно</p>
+            <p class="text-xl text-gray-500">Каждый день находим новые предложения</p>
+          </div>
+        </div>
+
+        <div class="flex rounded-xl bg-white shadow px-6 py-5">
+          <button class="px-6 py-3 rounded-xl bg-[#E8EFFD] text-lg font-medium">Цена</button>
+          <button class="px-6 py-3 text-lg font-medium">Дата вылета</button>
+        </div>
+
+        <div class="flex justify-between gap-x-8">
+          <% [ticket | _] = Map.get @tickets, "top" %>
+          <div class="w-2/3 rounded-xl overflow-hidden bg-white flex flex-col shadow">
+            <figure>
+              <img src={ticket["image"]}/>
+            </figure>
+            <div class="p-7 flex justify-between gap-x-2">
+              <div class="w-1/2">
+                <p class="text-gray-500 text-lg"><%= ticket["country"] %></p>
+                <p class="py-2.5 text-2xl font-medium"><%= ticket["city"] %></p>
+
+                <div class="flex items-center gap-x-3 text-lg text-gray-800 font-medium">
+                  <span><%= ticket["date_from"] %></span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none"><path d="M11 3.009H1.333M11 3.008L9.239 1.001M9.213 5.014l1.761-2.007M1 7.993h9.667M1 7.994L2.761 10M2.787 5.988L1.026 7.995" stroke="#1A2946" stroke-linecap="round" stroke-linejoin="bevel"/></svg>
+                  <span><%= ticket["date_to"] %></span>
+                  <div class="w-[1px] h-[18px] bg-gray-400"></div>
+                  <span><%= ticket["duration"] %></span>
+                </div>
+                <p class="mt-7 text-3xl font-bold">2 438 ₽</p>
+              </div>
+              <div class="w-1/2 pt-[88px] flex flex-col space-y-4">
+                <p class="text-xl text-[#36435c]"><%= ticket["description"] %></p>
+                <a href="#" class="flex items-center space-x-2 text-blue-500 hover:text-blue-800">
+                  <div>Читать далее</div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-xl bg-white shadow flex-grow">
+          </div>
+        </div>
+
+        <%= for ticket <- Map.get @tickets, "all" do %>
+          <div class="flex rounded-xl overflow-hidden bg-white shadow w-full">
+            <figure class="w-1/3">
+              <img src={ticket["image"]}/>
+            </figure>
+            <div class="w-2/3 p-7 flex justify-between gap-x-2">
+              <div class="w-1/2">
+                <p class="text-gray-500 text-lg"><%= ticket["country"] %></p>
+                <p class="py-2.5 text-2xl font-medium"><%= ticket["city"] %></p>
+                <div class="flex items-center gap-x-3 text-lg text-gray-800 font-medium">
+                  <span><%= ticket["date_from"] %></span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none"><path d="M11 3.009H1.333M11 3.008L9.239 1.001M9.213 5.014l1.761-2.007M1 7.993h9.667M1 7.994L2.761 10M2.787 5.988L1.026 7.995" stroke="#1A2946" stroke-linecap="round" stroke-linejoin="bevel"/></svg>
+                  <span><%= ticket["date_to"] %></span>
+                  <div class="w-[1px] h-[18px] bg-gray-400"></div>
+                  <span><%= ticket["duration"] %></span>
+                </div>
+                <p class="mt-7 text-3xl font-bold"><%= ticket["price"] %></p>
+              </div>
+              <div class="w-1/2 pt-[88px] flex flex-col space-y-4">
+                <p class="text-xl text-[#36435c] overflow-hidden"><%= ticket["description"] %></p>
+                <a href="#" class="flex items-center space-x-2 text-blue-500 hover:text-blue-800">
+                  <div>Читать далее</div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </main>
+  </body>
+</html>

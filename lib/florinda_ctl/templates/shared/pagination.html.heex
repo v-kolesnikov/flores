@@ -2,7 +2,7 @@
   <div></div>
   <div class="flex space-x-2">
     <%= if @page.metadata.before do %>
-      <a class="block" href={"#{@conn.request_path}?ending_before=#{@page.metadata.before}"}>
+      <a class="block" href={prev_page_url(@conn, @page)}>
         <button class="bg-white disabled:opacity-50 hover:bg-gray-100 text-sm font-medium py-1 px-2 border border-gray-400 rounded shadow">Prev page</button>
       </a>
     <% else %>
@@ -12,7 +12,7 @@
     <% end %>
 
     <%= if @page.metadata.after do %>
-      <a class="block" href={"#{@conn.request_path}?starting_after=#{@page.metadata.after}"}>
+      <a class="block" href={next_page_url(@conn, @page)}>
         <button class="bg-white disabled:opacity-50 hover:bg-gray-100 text-sm font-medium py-1 px-2 border border-gray-400 rounded shadow">Next page</button>
       </a>
     <% else %>

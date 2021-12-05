@@ -17,6 +17,16 @@ config :florinda, FlorindaCtl.Endpoint,
   pubsub_server: Florinda.PubSub,
   live_view: [signing_salt: "oO3r7B6S"]
 
+config :money,
+  default_currency: :RUB,
+  separator: ",",
+  delimiter: ".",
+  symbol: true,
+  symbol_on_right: true,
+  symbol_space: true,
+  fractional_unit: true,
+  strip_insignificant_zeros: false
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

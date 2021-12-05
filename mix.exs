@@ -51,6 +51,7 @@ defmodule Florinda.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:paginator, "~> 1.0.4"},
       {:yaml_elixir, "~> 2.8.0"},
+      {:money, "~> 1.9"},
     ]
   end
 

@@ -1,0 +1,2 @@
+ctl: APP=CTL mix phx.server
+web: APP=WEB mix phx.server

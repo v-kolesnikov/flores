@@ -1,5 +1,5 @@
-defmodule FlorindaCtl.PageController do
-  use FlorindaCtl, :controller
+defmodule FlorindaWeb.PageController do
+  use FlorindaWeb, :controller
 
   alias YamlElixir, as: YAML
 
@@ -9,6 +9,7 @@ defmodule FlorindaCtl.PageController do
       |> File.read!()
       |> YAML.read_from_string()
     tickets = document["tickets"]
+    # TODO: enable layout back
     conn
     |> put_layout(false)
     |> put_root_layout(false)

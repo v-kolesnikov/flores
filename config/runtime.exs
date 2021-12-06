@@ -43,6 +43,13 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  config :florinda, FlorindaWeb.Endpoint,
+    http: [
+      ip: {0, 0, 0, 0, 0, 0, 0, 0},
+      port: String.to_integer(System.get_env("PORT") || "5000")
+    ],
+    secret_key_base: secret_key_base
+
   # ## Using releases
   #
   # If you are doing OTP releases, you need to instruct Phoenix

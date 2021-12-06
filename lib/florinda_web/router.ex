@@ -1,11 +1,11 @@
-defmodule FlorindaCtl.Router do
-  use FlorindaCtl, :router
+defmodule FlorindaWeb.Router do
+  use FlorindaWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {FlorindaCtl.LayoutView, :root}
+    plug :put_root_layout, {FlorindaWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,23 +14,11 @@ defmodule FlorindaCtl.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", FlorindaCtl do
+  scope "/", FlorindaWeb do
     pipe_through :browser
 
-    get "/", Redirect, to: "/flights"
-    get "/aircrafts", AircraftsController, :index
-    get "/airports", AirportsController, :index
-    get "/airports/:id", AirportsController, :show
-    get "/bookings", BookingsController, :index
-    get "/flights", FlightsController, :index
-    get "/flights/:id", FlightsController, :show
-    get "/seats", SeatsController, :index
+    get "/", PageController, :index
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", FlorindaCtl do
-  #   pipe_through :api
-  # end
 
   # Enables LiveDashboard only for development
   #
@@ -44,7 +32,7 @@ defmodule FlorindaCtl.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: FlorindaCtl.Telemetry
+      live_dashboard "/dashboard", metrics: FlorindaWeb.Telemetry
     end
   end
 

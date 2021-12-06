@@ -26,9 +26,11 @@ defmodule FlorindaCtl.Router do
     get "/airports", AirportsController, :index
     get "/airports/:id", AirportsController, :show
     get "/bookings", BookingsController, :index
+    get "/bookings/:id", BookingsController, :show
     get "/flights", FlightsController, :index
     get "/flights/:id", FlightsController, :show
     get "/seats", SeatsController, :index
+    get "/tickets", TicketsController, :index
   end
 
   # Other scopes may use custom stacks.

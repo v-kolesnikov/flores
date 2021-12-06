@@ -18,4 +18,9 @@ defmodule FlorindaCtl.SharedView do
       |> URI.encode_query
     "#{conn.request_path}?#{query}"
   end
+
+  def total_results(count) do
+    {:ok, s} = Cldr.Number.to_string(count)
+    s
+  end
 end

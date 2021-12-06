@@ -52,6 +52,7 @@ defmodule Florinda.MixProject do
       {:paginator, "~> 1.0.4"},
       {:yaml_elixir, "~> 2.8.0"},
       {:money, "~> 1.9"},
+      {:ex_cldr_numbers, "~> 2.0"},
     ]
   end
 

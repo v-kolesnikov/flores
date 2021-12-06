@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody class="td-p0 divide-y border-b">
-      <%= for seat <- @seats do %>
+      <%= for seat <- @page.entries do %>
         <tr class="text-sm hover:bg-gray-50">
           <td><a class="block p-2 font-medium" href="#"><%= seat.aircraft_code %></a></td>
           <td><a class="block p-2" href="#"><%= seat.seat_no %></a></td>
@@ -19,4 +19,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= render(FlorindaCtl.SharedView, "pagination.html", conn: @conn, page: @page) %>
 </section>

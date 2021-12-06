@@ -18,6 +18,10 @@ case System.get_env("APP", "CTL") do
       pubsub_server: Florinda.PubSub,
       live_view: [signing_salt: "oO3r7B6S"]
 
+    config :ex_cldr,
+      default_locale: "en",
+      default_backend: FlorindaCtl.Cldr,
+      json_library: Jason
   "WEB" ->
     config :florinda, FlorindaWeb.Endpoint,
       url: [host: "localhost"],

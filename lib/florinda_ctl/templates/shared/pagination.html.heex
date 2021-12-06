@@ -1,5 +1,16 @@
 <div class="py-4 flex justify-between">
-  <div></div>
+  <div class="text-sm">
+    <%= if @page.metadata.total_count_cap_exceeded do %>
+      <span>Over </span>
+      <span class="font-medium"><%= total_results(@page.metadata.total_count) %> </span>
+      <span>results</span>
+    <% else %>
+      <%= if @page.metadata.total_count do %>
+        <span class="font-medium"><%= total_results(@page.metadata.total_count) %> </span>
+        <span>results</span>
+      <% end %>
+    <% end %>
+  </div>
   <div class="flex space-x-2">
     <%= if @page.metadata.before do %>
       <a class="block" href={prev_page_url(@conn, @page)}>

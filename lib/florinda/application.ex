@@ -15,10 +15,9 @@ defmodule Florinda.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Florinda.PubSub},
       # Start the Endpoint (http/https)
-      case System.get_env("APP") do
+      case System.get_env("APP", "CTL") do
         "CTL" -> FlorindaCtl.Endpoint
         "WEB" -> FlorindaWeb.Endpoint
-        _ -> FlorindaCtl.Endpoint
       end
       # Start a worker by calling: Florinda.Worker.start_link(arg)
       # {Florinda.Worker, arg}

@@ -10,18 +10,21 @@ import Config
 config :florinda,
   ecto_repos: [Florinda.Repo]
 
-# Configures the endpoint
-config :florinda, FlorindaCtl.Endpoint,
-  url: [host: "localhost"],
-  render_errors: [view: FlorindaCtl.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Florinda.PubSub,
-  live_view: [signing_salt: "oO3r7B6S"]
+case System.get_env("APP", "CTL") do
+  "CTL" ->
+    config :florinda, FlorindaCtl.Endpoint,
+      url: [host: "localhost"],
+      render_errors: [view: FlorindaCtl.ErrorView, accepts: ~w(html json), layout: false],
+      pubsub_server: Florinda.PubSub,
+      live_view: [signing_salt: "oO3r7B6S"]
 
-config :florinda, FlorindaWeb.Endpoint,
-  url: [host: "localhost"],
-  render_errors: [view: FlorindaWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Florinda.PubSub,
-  live_view: [signing_salt: "oO3r7B6S"]
+  "WEB" ->
+    config :florinda, FlorindaWeb.Endpoint,
+      url: [host: "localhost"],
+      render_errors: [view: FlorindaWeb.ErrorView, accepts: ~w(html json), layout: false],
+      pubsub_server: Florinda.PubSub,
+      live_view: [signing_salt: "oO3r7B6S"]
+end
 
 config :money,
   default_currency: :RUB,

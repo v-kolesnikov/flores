@@ -17,6 +17,12 @@ config :florinda, FlorindaCtl.Endpoint,
   pubsub_server: Florinda.PubSub,
   live_view: [signing_salt: "oO3r7B6S"]
 
+config :florinda, FlorindaWeb.Endpoint,
+  url: [host: "localhost"],
+  render_errors: [view: FlorindaWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Florinda.PubSub,
+  live_view: [signing_salt: "oO3r7B6S"]
+
 config :money,
   default_currency: :RUB,
   separator: ",",

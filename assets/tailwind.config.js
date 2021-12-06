@@ -4,7 +4,8 @@ module.exports = {
   mode: "jit",
   purge: [
     './js/**/*.js',
-    '../lib/florinda_ctl/**/*.*ex'
+    '../lib/florinda_ctl/**/*.*ex',
+    '../lib/florinda_web/**/*.*ex',
   ],
   darkMode: false,
   theme: {

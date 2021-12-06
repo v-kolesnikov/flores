@@ -14,10 +14,14 @@ defmodule FlorindaCtl.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/" do
+    pipe_through :browser
+    get "/", Florinda.Plugs.Redirect, to: "/flights"
+  end
+
   scope "/", FlorindaCtl do
     pipe_through :browser
 
-    get "/", Redirect, to: "/flights"
     get "/aircrafts", AircraftsController, :index
     get "/airports", AirportsController, :index
     get "/airports/:id", AirportsController, :show

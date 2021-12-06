@@ -1,4 +1,4 @@
-defmodule FlorindaCtl.Redirect do
+defmodule Florinda.Plugs.Redirect do
   @moduledoc """
   A Plug to allow for easily doing redirects within a Plug or Phoenix router.
   Based on code found at:

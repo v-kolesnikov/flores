@@ -25,7 +25,7 @@ defmodule FlorindaCtl.Repos.Flights do
     )
   end
 
-  def retrieve(id), do: Repo.get Flight, id
+  def retrieve(id), do: Flight |> Repo.get(id)
 
   def by_arrival(query, nil), do: query
   def by_arrival(query, arrival) do

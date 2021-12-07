@@ -1,0 +1,18 @@
+<table class="w-full">
+  <thead class="text-xs font-medium uppercase border-b">
+    <tr>
+      <td class="p-2">Ticket NO</td>
+      <td class="p-2">Passenger</td>
+      <td class="p-2">Book Ref</td>
+    </tr>
+  </thead>
+  <tbody class="td-p0 divide-y border-b">
+    <%= for ticket <- @tickets do %>
+      <tr class="text-sm hover:bg-gray-50">
+        <td><a class="block p-2" href=""><span class="font-medium font-mono"><%= ticket.ticket_no %></span></a></td>
+        <td><a class="block p-2" href=""><span class="font-medium"><%= ticket.passenger_name %></span></a></td>
+        <td><a class="block p-2" href=""><span class="font-mono"><%= ticket.book_ref %></span></a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

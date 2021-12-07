@@ -1,0 +1,6 @@
+<section class="px-5">
+  <h1 class="py-3 text-3xl font-bold">Tickets</h1>
+
+  <%= render("_table.html", conn: @conn, tickets: @page.entries) %>
+  <%= render(FlorindaCtl.SharedView, "pagination.html", conn: @conn, page: @page) %>
+</section>

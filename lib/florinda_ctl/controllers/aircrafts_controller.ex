@@ -12,7 +12,6 @@ defmodule FlorindaCtl.AircraftsController do
       query,
       before: params |> Map.get("ending_before"),
       after: params |> Map.get("starting_after"),
-      cursor_fields: [:aircraft_code],
       sort_direction: :asc,
       limit: 20
     )

@@ -49,10 +49,10 @@ defmodule Florinda.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:paginator, "~> 1.0.4"},
       {:yaml_elixir, "~> 2.8.0"},
       {:money, "~> 1.9"},
       {:ex_cldr_numbers, "~> 2.0"},
+      {:quarto, "~> 1.1"}
     ]
   end
 

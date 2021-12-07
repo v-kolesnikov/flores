@@ -7,12 +7,11 @@ defmodule FlorindaCtl.AirportsController do
   import Ecto.Query
 
   def index(conn, params) do
-    query = from(t in Airport, order_by: [asc: t.airport_name])
+    query = from(t in Airport, order_by: [asc: t.airport_code])
     page = Repo.paginate(
       query,
       before: params |> Map.get("ending_before"),
       after: params |> Map.get("starting_after"),
-      cursor_fields: [:airport_name],
       sort_direction: :asc,
       limit: 20
     )

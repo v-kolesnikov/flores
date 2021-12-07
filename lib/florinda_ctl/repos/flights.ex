@@ -16,7 +16,6 @@ defmodule FlorindaCtl.Repos.Flights do
       query,
       before: params |> Map.get("ending_before"),
       after: params |> Map.get("starting_after"),
-      cursor_fields: [:flight_id],
       sort_direction: :desc,
       include_total_count: true,
       total_count_primary_key_field: :flight_id,

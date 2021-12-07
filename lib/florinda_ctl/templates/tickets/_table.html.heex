@@ -8,10 +8,11 @@
   </thead>
   <tbody class="td-p0 divide-y border-b">
     <%= for ticket <- @tickets do %>
+      <% path = Routes.tickets_path(@conn, :show, ticket.ticket_no) %>
       <tr class="text-sm hover:bg-gray-50">
-        <td><a class="block p-2" href=""><span class="font-medium font-mono"><%= ticket.ticket_no %></span></a></td>
-        <td><a class="block p-2" href=""><span class="font-medium"><%= ticket.passenger_name %></span></a></td>
-        <td><a class="block p-2" href=""><span class="font-mono"><%= ticket.book_ref %></span></a></td>
+        <td><a class="block p-2" href={path}><span class="font-medium font-mono"><%= ticket.ticket_no %></span></a></td>
+        <td><a class="block p-2" href={path}><span class="font-medium"><%= ticket.passenger_name %></span></a></td>
+        <td><a class="block p-2" href={path}><span class="font-mono"><%= ticket.book_ref %></span></a></td>
       </tr>
     <% end %>
   </tbody>

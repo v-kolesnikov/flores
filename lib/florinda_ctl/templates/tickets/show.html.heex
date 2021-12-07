@@ -1,0 +1,46 @@
+<div class="px-5">
+  <div class="divide-y">
+    <div class="py-3 space-y-2">
+      <div class="text-xs text-gray-500 font-medium uppercase">ticket</div>
+      <div class="flex flex-wrap gap-x-2 items-baseline truncate">
+        <div class="text-3xl font-bold truncate"><%= @ticket.ticket_no %></div>
+      </div>
+    </div>
+
+    <div class="py-4 flex flex-col sm:flex-row gap-y-2 sm:divide-x">
+      <div class="sm:pr-5">
+        <div class="py-0.5 text-sm text-gray-500">Booking</div>
+        <div class="py-0.5 text-sm font-medium text-indigo-600 hover:text-black">
+          <a href={Routes.bookings_path(@conn, :show, @ticket.book_ref)}><%= @ticket.book_ref %></a>
+        </div>
+      </div>
+      <div class="sm:px-5">
+        <div class="py-0.5 text-sm text-gray-500">Passenger</div>
+        <div class="py-0.5 text-sm font-medium"><%= @ticket.passenger_name %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-2 divide-y">
+    <div class="py-3 text-xl font-bold">Ticket details</div>
+    <div class="py-3 space-y-2 break-words">
+      <div class="flex flex-col sm:flex-row gap-y-1">
+        <div class="text-sm text-gray-500 w-44">Booking</div>
+        <div class="text-sm"><%= @ticket.book_ref %></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-y-1">
+        <div class="text-sm text-gray-500 w-44">Passenger ID</div>
+        <div class="text-sm"><%= @ticket.passenger_id %></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-y-1">
+        <div class="text-sm text-gray-500 w-44">Passenger Name</div>
+        <div class="text-sm"><%= @ticket.passenger_name %></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="py-3 border-b font-bold">Flights</div>
+    <%= render(FlorindaCtl.FlightsView, "_table.html", conn: @conn, entries: @ticket.flights) %>
+  </div>
+</div>

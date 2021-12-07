@@ -52,6 +52,7 @@ defmodule Florinda.MixProject do
       {:yaml_elixir, "~> 2.8.0"},
       {:money, "~> 1.9"},
       {:ex_cldr_numbers, "~> 2.0"},
+      {:timex, "~> 3.0"},
       {:quarto, "~> 1.1"}
     ]
   end

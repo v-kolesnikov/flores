@@ -3,7 +3,7 @@
     <div class="py-3 space-y-2">
       <div class="text-xs text-gray-500 font-medium uppercase">flight</div>
       <div class="flex flex-wrap gap-x-2 items-baseline truncate">
-        <div class="text-3xl font-bold truncate"><%= @flight.flight_no %></div>
+        <div class="text-3xl font-bold font-mono tracking-wider truncate"><%= @flight.flight_no %></div>
       </div>
     </div>
 
@@ -39,7 +39,7 @@
         <div class="text-sm"><%= @flight.flight_id %></div>
       </div>
       <div class="flex flex-col sm:flex-row gap-y-1">
-        <div class="text-sm text-gray-500 w-44">NO</div>
+        <div class="text-sm text-gray-500 w-44">Number</div>
         <div class="text-sm"><%= @flight.flight_no %></div>
       </div>
       <div class="flex flex-col sm:flex-row gap-y-1">

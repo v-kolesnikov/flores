@@ -1,0 +1,19 @@
+<table class="w-full">
+  <thead class="text-xs font-medium uppercase border-b">
+    <tr>
+      <td class="p-2">ref</td>
+      <td class="p-2 text-right">amount</td>
+      <td class="p-2 text-right">date</td>
+    </tr>
+  </thead>
+  <tbody class="td-p0 divide-y border-b">
+    <%= for booking <- @entries do %>
+      <% booking_path = Routes.bookings_path(@conn, :show, booking.book_ref) %>
+      <tr class="text-sm hover:bg-gray-50">
+        <td><a class="block p-2" href={booking_path}><span class="font-medium tracking-wider"><%= booking.book_ref %></span></a></td>
+        <td><a class="block p-2 text-right" href={booking_path}><span class="font-medium"><%= Money.to_string(Money.parse!(booking.total_amount, :RUB)) %></span></a></td>
+        <td><a class="block p-2 text-right" href={booking_path}><span class=""><%= Timex.format!(booking.book_date, "%Y-%m-%d, %H:%M", :strftime) %></span></a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

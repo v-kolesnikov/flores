@@ -10,6 +10,7 @@ defmodule FlorindaCtl.BookingsController do
 
   def show(conn, %{"id" => id}) do
     booking = Bookings.retrieve(id, %{preload: :tickets})
-    render(conn, "show.html", booking: booking)
+    flights = Bookings.flights(id)
+    render(conn, "show.html", booking: booking, flights: flights)
   end
 end

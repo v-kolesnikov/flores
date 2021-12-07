@@ -1,0 +1,37 @@
+<table class="w-full">
+  <thead class="text-xs font-medium uppercase border-b">
+    <tr>
+      <!-- <td class="p-2">Book Ref</td> -->
+      <td class="p-2">Ticket NO</td>
+      <td class="p-2">Passenge ID</td>
+      <td class="p-2">Passenge Name</td>
+      <td class="p-2 text-right">Amount</td>
+      <td class="p-2">Fare Conditions</td>
+      <td class="p-2">Scheduled departure</td>
+      <td class="p-2">Scheduled arrival</td>
+      <td class="p-2">Departure</td>
+      <td class="p-2">Arrival</td>
+      <td class="p-2">Status</td>
+      <td class="p-2 text-right">Seat NO</td>
+    </tr>
+  </thead>
+  <tbody class="td-p0 divide-y border-b">
+    <%= for flight <- @entries do %>
+      <tr class="text-sm hover:bg-gray-50">
+        <% ticket_path = Routes.tickets_path(@conn, :show, flight[:ticket_no]) %>
+        <td><a class="block p-2" href={ticket_path}><span class="font-medium tracking-wider"><%= flight[:ticket_no] %></span></a></td>
+        <td><a class="block p-2" href={ticket_path}><span class="font-mono"><%= flight[:passenger_id] %></span></a></td>
+        <td><a class="block p-2" href={ticket_path}><span class="font-medium"><%= flight[:passenger_name] %></span></a></td>
+        <td><a class="block p-2 text-right" href={ticket_path}><span><%= Money.to_string(Money.parse!(flight[:amount], :RUB)) %></span></a></td>
+        <td><a class="block p-2" href={ticket_path}><span><%= flight[:fare_conditions] %></span></a></td>
+        <td><a class="block p-2" href={ticket_path}><span><%= Timex.format!(flight[:scheduled_departure_local], "%Y-%m-%d, %H:%M", :strftime) %></span></a></td>
+        <td><a class="block p-2" href={ticket_path}><span><%= Timex.format!(flight[:scheduled_arrival_local], "%Y-%m-%d, %H:%M", :strftime) %></span></a></td>
+        <td><a class="block p-2" href={ticket_path}><span><%= flight[:departure] %></span></a></td>
+        <td><a class="block p-2" href={ticket_path}><span><%= flight[:arrival] %></span></a></td>
+        <td><a class="block p-2" href={ticket_path}><%= render FlorindaCtl.FlightsView, "_status_badge.html", status: flight[:status] %></a></td>
+        <td><a class="block p-2 text-right" href={ticket_path}><span class="font-mono"><%= flight[:seat_no] || raw "&mdash;" %></span></a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

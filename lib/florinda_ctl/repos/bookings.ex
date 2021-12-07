@@ -5,15 +5,16 @@ defmodule FlorindaCtl.Repos.Bookings do
   import Ecto.Query
 
   def list(params) do
-    query =
-      from(t in Booking)
-      |> order
+    from(t in Booking)
+    |> order
+    |> paginate(params)
+  end
 
+  def paginate(query, params) do
     Repo.paginate(
       query,
       before: params |> Map.get("ending_before"),
       after: params |> Map.get("starting_after"),
-      cursor_fields: [:book_ref],
       sort_direction: :desc,
       include_total_count: true,
       total_count_primary_key_field: :book_ref,

@@ -13,7 +13,6 @@ defmodule FlorindaCtl.Repos.Tickets do
       query,
       before: params |> Map.get("ending_before"),
       after: params |> Map.get("starting_after"),
-      cursor_fields: [:ticket_no],
       sort_direction: :desc,
       include_total_count: true,
       total_count_primary_key_field: :ticket_no,

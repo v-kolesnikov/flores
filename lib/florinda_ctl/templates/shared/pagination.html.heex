@@ -1,4 +1,4 @@
-<div class="py-4 flex justify-between">
+<div class="py-4 flex flex-col gap-y-2 sm:flex-row sm:justify-between">
   <div class="text-sm">
     <%= if @page.metadata.total_count_cap_exceeded do %>
       <span>Over </span>
@@ -11,7 +11,8 @@
       <% end %>
     <% end %>
   </div>
-  <div class="flex space-x-2">
+
+  <div class="flex justify-between space-x-2">
     <%= if @page.metadata.before do %>
       <a class="block" href={prev_page_url(@conn, @page)}>
         <button class="bg-white disabled:opacity-50 hover:bg-gray-100 text-sm font-medium py-1 px-2 border border-gray-400 rounded shadow">Prev page</button>

@@ -1,5 +1,5 @@
 <table class="w-full">
-  <thead class="text-xs font-medium uppercase border-b">
+  <thead class="hidden sm:table-header-group text-xs font-medium uppercase border-b">
     <tr>
       <td class="p-2">no</td>
       <td class="p-2">Departure</td>
@@ -13,16 +13,16 @@
   </thead>
   <tbody class="td-p0 divide-y border-b">
     <%= for flight <- @entries do %>
-      <tr class="text-sm hover:bg-gray-50">
+      <tr class="flex flex-col sm:table-row py-2 sm:py-0 text-sm hover:bg-gray-50">
         <% flight_path = Routes.flights_path(@conn, :show, flight.flight_id) %>
-        <td><a class="block p-2" href={flight_path}><span class="font-medium"><%= flight.flight_no %></span></a></td>
-        <td><a class="block p-2" href={flight_path}><span class=""><%= flight.departure_airport %></span></a></td>
-        <td><a class="block p-2" href={flight_path}><span class=""><%= flight.arrival_airport %></span></a></td>
-        <td><a class="block p-2" href={flight_path}><span class=""><%= Timex.format!(flight.scheduled_departure, "%Y-%m-%d, %H:%M", :strftime) %></span></a></td>
-        <td><a class="block p-2" href={flight_path}><span class=""><%= Timex.format!(flight.scheduled_arrival, "%Y-%m-%d, %H:%M", :strftime) %></span></a></td>
-        <td><a class="block p-2" href={flight_path}><%= render "_status_badge.html", status: flight.status %></a></td>
-        <td><a class="block p-2" href={flight_path}><span class=""><%= flight.actual_departure || raw "&mdash;" %></span></a></td>
-        <td><a class="block p-2" href={flight_path}><span class=""><%= flight.actual_arrival || raw "&mdash;" %></span></a></td>
+        <td><a class="block py-1 sm:p-2" href={flight_path}><span class="font-medium"><%= flight.flight_no %></span></a></td>
+        <td><a class="block py-1 sm:p-2" href={flight_path}><span class=""><%= flight.departure_airport %></span></a></td>
+        <td><a class="block py-1 sm:p-2" href={flight_path}><span class=""><%= flight.arrival_airport %></span></a></td>
+        <td class="hidden sm:table-cell"><a class="block py-1 sm:p-2" href={flight_path}><span class=""><%= Timex.format!(flight.scheduled_departure, "%Y-%m-%d, %H:%M", :strftime) %></span></a></td>
+        <td class="hidden sm:table-cell"><a class="block py-1 sm:p-2" href={flight_path}><span class=""><%= Timex.format!(flight.scheduled_arrival, "%Y-%m-%d, %H:%M", :strftime) %></span></a></td>
+        <td class="hidden sm:table-cell"><a class="block py-1 sm:p-2" href={flight_path}><%= render "_status_badge.html", status: flight.status %></a></td>
+        <td class="hidden sm:table-cell"><a class="block py-1 sm:p-2" href={flight_path}><span class=""><%= flight.actual_departure || raw "&mdash;" %></span></a></td>
+        <td class="hidden sm:table-cell"><a class="block py-1 sm:p-2" href={flight_path}><span class=""><%= flight.actual_arrival || raw "&mdash;" %></span></a></td>
       </tr>
     <% end %>
   </tbody>

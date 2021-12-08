@@ -39,7 +39,7 @@ defmodule FlorindaCtl.Repos.Bookings do
       select: %{
         book_ref: b.book_ref,
         ticket_no: t.ticket_no,
-        passenger_id: t.passenger_id,
+        flight_no: f.flight_no,
         passenger_name: t.passenger_name,
         fare_conditions: tf.fare_conditions,
         amount: tf.amount,

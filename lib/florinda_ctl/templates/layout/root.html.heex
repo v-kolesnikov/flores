@@ -10,6 +10,7 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
+    <%= render "_user_menu.html", assigns %>
     <div class="containter flex">
       <nav class="hidden lg:block lg:border-r">
         <div class="sticky top-0 h-screen bg-gray-50 w-80">

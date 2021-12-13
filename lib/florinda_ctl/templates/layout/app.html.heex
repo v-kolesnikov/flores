@@ -1,3 +1,19 @@
-<main class="container px-5 py-5">
-  <%= @inner_content %>
-</main>
+<div class="containter flex">
+  <nav class="hidden lg:block lg:border-r">
+    <div class="sticky top-0 h-screen bg-gray-50 w-80">
+      <ul class="pt-10 px-6 text-sm">
+        <li><a href={Routes.aircrafts_path(@conn, :index)} class="block p-1 hover:underline">Aircrafts</a></li>
+        <li><a href={Routes.airports_path(@conn, :index)} class="block p-1 hover:underline">Airports</a></li>
+        <li><a href={Routes.bookings_path(@conn, :index)} class="block p-1 hover:underline">Bookings</a></li>
+        <li><a href={Routes.flights_path(@conn, :index)} class="block p-1 hover:underline">Flights</a></li>
+        <li><a href={Routes.tickets_path(@conn, :index)} class="block p-1 hover:underline">Tickets</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="w-full">
+    <%= render "_search.html", assigns %>
+    <main class="container px-5 py-5">
+      <%= @inner_content %>
+    </main>
+  </div>
+</div>

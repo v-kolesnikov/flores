@@ -1,6 +1,6 @@
 <div class="sticky top-0">
   <div class="divide-y bg-white border-b">
-    <div class="flex items-center">
+    <div class="flex items-center justify-between">
       <form method="GET" action="/" class="w-full">
         <div class="flex items-center py-3 pl-10">
           <svg
@@ -22,6 +22,18 @@
           >
         </div>
       </form>
+      <div class="pr-10">
+        <%= if @current_user do %>
+          <div x-data="{open: false }" class="relative">
+            <button x-on:click="open = !open" class="text-gray-600 hover:text-black cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <%= render "_profile_menu.html", assigns %>
+          </div>
+        <% end %>
+      </div>
       <div class="px-4 lg:hidden">
         <a href="/" class="block" aria-label="menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

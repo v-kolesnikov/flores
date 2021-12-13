@@ -1,7 +1,16 @@
 defmodule FlorindaCtl.Router do
   use FlorindaCtl, :router
 
-  import FlorindaCtl.Auth.UserAuth
+  import FlorindaCtl.Auth.UserAuth, only: [
+    fetch_current_user: 2,
+    redirect_if_user_is_authenticated: 2,
+    require_authenticated_user: 2
+  ]
+
+  pipeline :auth do
+    plug :put_root_layout, {FlorindaCtl.LayoutView, "auth_root.html"}
+    plug :put_layout, {FlorindaCtl.LayoutView, "auth.html"}
+  end
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,29 +27,28 @@ defmodule FlorindaCtl.Router do
   end
 
   scope "/" do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
+
     get "/", Florinda.Plugs.Redirect, to: "/flights"
-  end
 
-  scope "/", FlorindaCtl do
-    pipe_through :browser
-
-    get "/aircrafts", AircraftsController, :index
-    get "/airports", AirportsController, :index
-    get "/airports/:id", AirportsController, :show
-    get "/bookings", BookingsController, :index
-    get "/bookings/:id", BookingsController, :show
-    get "/flights", FlightsController, :index
-    get "/flights/:id", FlightsController, :show
-    get "/seats", SeatsController, :index
-    get "/tickets", TicketsController, :index
-    get "/tickets/:id", TicketsController, :show
+    scope "/", FlorindaCtl do
+      get "/aircrafts", AircraftsController, :index
+      get "/airports", AirportsController, :index
+      get "/airports/:id", AirportsController, :show
+      get "/bookings", BookingsController, :index
+      get "/bookings/:id", BookingsController, :show
+      get "/flights", FlightsController, :index
+      get "/flights/:id", FlightsController, :show
+      get "/seats", SeatsController, :index
+      get "/tickets", TicketsController, :index
+      get "/tickets/:id", TicketsController, :show
+    end
   end
 
   ## Authentication routes
 
   scope "/auth", FlorindaCtl.Auth, as: :auth do
-    pipe_through [:browser, :redirect_if_user_is_authenticated]
+    pipe_through [:browser, :auth, :redirect_if_user_is_authenticated]
 
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create

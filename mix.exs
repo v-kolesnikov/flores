@@ -54,7 +54,9 @@ defmodule Florinda.MixProject do
       {:money, "~> 1.9"},
       {:ex_cldr_numbers, "~> 2.0"},
       {:timex, "~> 3.0"},
-      {:quarto, "~> 1.1"}
+      {:quarto, "~> 1.1"},
+      {:httpoison, "~> 1.8"},
+      {:dotenvy, "~> 0.5.0"},
     ]
   end
 

@@ -1,16 +1,16 @@
-defmodule FlorindaWeb.Auth.UserAuthTest do
-  use FlorindaWeb.ConnCase, async: true
+defmodule FlorindaCtl.Auth.UserAuthTest do
+  use FlorindaCtl.ConnCase, async: true
 
-  alias Florinda.Accounts
-  alias FlorindaWeb.Auth.UserAuth
+  alias FlorindaCtl.Accounts
+  alias FlorindaCtl.Auth.UserAuth
   import Florinda.AccountsFixtures
 
-  @remember_me_cookie "_florinda_web_user_remember_me"
+  @remember_me_cookie "_florinda_ctl_user_remember_me"
 
   setup %{conn: conn} do
     conn =
       conn
-      |> Map.replace!(:secret_key_base, FlorindaWeb.Endpoint.config(:secret_key_base))
+      |> Map.replace!(:secret_key_base, FlorindaCtl.Endpoint.config(:secret_key_base))
       |> init_test_session(%{})
 
     %{user: user_fixture(), conn: conn}
@@ -41,7 +41,7 @@ defmodule FlorindaWeb.Auth.UserAuthTest do
 
       assert %{value: signed_token, max_age: max_age} = conn.resp_cookies[@remember_me_cookie]
       assert signed_token != get_session(conn, :user_token)
-      assert max_age == 5_184_000
+      assert max_age == 604_800
     end
   end
 
@@ -65,7 +65,7 @@ defmodule FlorindaWeb.Auth.UserAuthTest do
 
     test "broadcasts to the given live_socket_id", %{conn: conn} do
       live_socket_id = "users_sessions:abcdef-token"
-      FlorindaWeb.Endpoint.subscribe(live_socket_id)
+      FlorindaCtl.Endpoint.subscribe(live_socket_id)
 
       conn
       |> put_session(:live_socket_id, live_socket_id)

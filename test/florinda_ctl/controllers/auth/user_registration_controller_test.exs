@@ -1,5 +1,5 @@
-defmodule FlorindaWeb.Auth.UserRegistrationControllerTest do
-  use FlorindaWeb.ConnCase, async: true
+defmodule FlorindaCtl.Auth.UserRegistrationControllerTest do
+  use FlorindaCtl.ConnCase, async: true
 
   import Florinda.AccountsFixtures
 
@@ -7,9 +7,9 @@ defmodule FlorindaWeb.Auth.UserRegistrationControllerTest do
     test "renders registration page", %{conn: conn} do
       conn = get(conn, Routes.auth_user_registration_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "<h1>Register</h1>"
-      assert response =~ "Log in</a>"
-      assert response =~ "Register</a>"
+      assert response =~ "Create your Florinda account"
+      assert response =~ "Create account"
+      assert response =~ "Sign in</a>"
     end
 
     test "redirects if already logged in", %{conn: conn} do
@@ -30,25 +30,18 @@ defmodule FlorindaWeb.Auth.UserRegistrationControllerTest do
 
       assert get_session(conn, :user_token)
       assert redirected_to(conn) == "/"
-
-      # Now do a logged in request and assert on the menu
-      conn = get(conn, "/")
-      response = html_response(conn, 200)
-      assert response =~ email
-      assert response =~ "Settings</a>"
-      assert response =~ "Log out</a>"
     end
 
     test "render errors for invalid data", %{conn: conn} do
       conn =
         post(conn, Routes.auth_user_registration_path(conn, :create), %{
-          "user" => %{"email" => "with spaces", "password" => "too short"}
+          "user" => %{"email" => "with spaces", "password" => "short"}
         })
 
       response = html_response(conn, 200)
-      assert response =~ "<h1>Register</h1>"
+      assert response =~ "Create your Florinda account"
       assert response =~ "must have the @ sign and no spaces"
-      assert response =~ "should be at least 12 character"
+      assert response =~ "should be at least 6 character"
     end
   end
 end

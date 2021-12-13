@@ -1,7 +1,7 @@
-defmodule FlorindaWeb.Auth.UserConfirmationControllerTest do
-  use FlorindaWeb.ConnCase, async: true
+defmodule FlorindaCtl.Auth.UserConfirmationControllerTest do
+  use FlorindaCtl.ConnCase, async: true
 
-  alias Florinda.Accounts
+  alias FlorindaCtl.Accounts
   alias Florinda.Repo
   import Florinda.AccountsFixtures
 

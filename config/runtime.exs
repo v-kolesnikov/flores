@@ -1,4 +1,16 @@
 import Config
+import Dotenvy
+
+source [
+  ".env",
+  ".env.#{config_env()}",
+  ".env.#{config_env()}.local"
+]
+
+config :florinda,
+  ctl_recaptcha_enabled: env!("CTL_RECAPTCHA_ENABLED", :boolean!),
+  ctl_recaptcha_site_key: env!("CTL_RECAPTCHA_SITE_KEY", :string?),
+  ctl_recaptcha_secret_key: env!("CTL_RECAPTCHA_SECRET_KEY", :string?)
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the

@@ -1,5 +1,5 @@
-defmodule FlorindaWeb.Auth.UserSessionControllerTest do
-  use FlorindaWeb.ConnCase, async: true
+defmodule FlorindaCtl.Auth.UserSessionControllerTest do
+  use FlorindaCtl.ConnCase, async: true
 
   import Florinda.AccountsFixtures
 
@@ -11,8 +11,8 @@ defmodule FlorindaWeb.Auth.UserSessionControllerTest do
     test "renders log in page", %{conn: conn} do
       conn = get(conn, Routes.auth_user_session_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "<h1>Log in</h1>"
-      assert response =~ "Register</a>"
+      assert response =~ "Sign in to your account"
+      assert response =~ "Sign up</a>"
       assert response =~ "Forgot your password?</a>"
     end
 
@@ -31,13 +31,6 @@ defmodule FlorindaWeb.Auth.UserSessionControllerTest do
 
       assert get_session(conn, :user_token)
       assert redirected_to(conn) == "/"
-
-      # Now do a logged in request and assert on the menu
-      conn = get(conn, "/")
-      response = html_response(conn, 200)
-      assert response =~ user.email
-      assert response =~ "Settings</a>"
-      assert response =~ "Log out</a>"
     end
 
     test "logs the user in with remember me", %{conn: conn, user: user} do
@@ -50,7 +43,7 @@ defmodule FlorindaWeb.Auth.UserSessionControllerTest do
           }
         })
 
-      assert conn.resp_cookies["_florinda_web_user_remember_me"]
+      assert conn.resp_cookies["_florinda_ctl_user_remember_me"]
       assert redirected_to(conn) == "/"
     end
 
@@ -75,8 +68,8 @@ defmodule FlorindaWeb.Auth.UserSessionControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ "<h1>Log in</h1>"
-      assert response =~ "Invalid email or password"
+      assert response =~ "Sign in to your account"
+      assert response =~ "Incorrect email or password"
     end
   end
 

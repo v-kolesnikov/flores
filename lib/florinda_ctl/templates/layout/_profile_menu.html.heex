@@ -1,0 +1,24 @@
+<div
+  x-show="open"
+  x-transition
+  x-cloak
+  @click.outside="open = false"
+  class="absolute right-0 w-[232px]"
+  >
+  <div class="bg-white rounded border shadow">
+    <div class="p-3 border-b">
+      <div class="font-medium"><%= @current_user.email %></div>
+      <div class="text-xs text-gray-600">Administrator</div>
+    </div>
+    <nav class="py-2">
+      <ul>
+        <li class="px-3 py-1 hover:bg-gray-50">
+          <%= link "Settings", to: Routes.auth_user_settings_path(@conn, :edit), class: "block text-sm font-medium" %>
+        </li>
+        <li class="px-3 py-1 hover:bg-gray-50">
+          <%= link "Sign out", to: Routes.auth_user_session_path(@conn, :delete), method: :delete, class: "block text-sm font-medium"%>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

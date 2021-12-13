@@ -1,6 +1,17 @@
 defmodule FlorindaCtl.Router do
   use FlorindaCtl, :router
 
+  import FlorindaCtl.Auth.UserAuth, only: [
+    fetch_current_user: 2,
+    redirect_if_user_is_authenticated: 2,
+    require_authenticated_user: 2
+  ]
+
+  pipeline :auth do
+    plug :put_root_layout, {FlorindaCtl.LayoutView, "auth_root.html"}
+    plug :put_layout, {FlorindaCtl.LayoutView, "auth.html"}
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +19,7 @@ defmodule FlorindaCtl.Router do
     plug :put_root_layout, {FlorindaCtl.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_user
   end
 
   pipeline :api do
@@ -15,23 +27,55 @@ defmodule FlorindaCtl.Router do
   end
 
   scope "/" do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
+
     get "/", Florinda.Plugs.Redirect, to: "/flights"
+
+    scope "/", FlorindaCtl do
+      get "/aircrafts", AircraftsController, :index
+      get "/airports", AirportsController, :index
+      get "/airports/:id", AirportsController, :show
+      get "/bookings", BookingsController, :index
+      get "/bookings/:id", BookingsController, :show
+      get "/flights", FlightsController, :index
+      get "/flights/:id", FlightsController, :show
+      get "/seats", SeatsController, :index
+      get "/tickets", TicketsController, :index
+      get "/tickets/:id", TicketsController, :show
+    end
   end
 
-  scope "/", FlorindaCtl do
-    pipe_through :browser
+  ## Authentication routes
 
-    get "/aircrafts", AircraftsController, :index
-    get "/airports", AirportsController, :index
-    get "/airports/:id", AirportsController, :show
-    get "/bookings", BookingsController, :index
-    get "/bookings/:id", BookingsController, :show
-    get "/flights", FlightsController, :index
-    get "/flights/:id", FlightsController, :show
-    get "/seats", SeatsController, :index
-    get "/tickets", TicketsController, :index
-    get "/tickets/:id", TicketsController, :show
+  scope "/auth", FlorindaCtl.Auth, as: :auth do
+    pipe_through [:browser, :auth, :redirect_if_user_is_authenticated]
+
+    get "/users/register", UserRegistrationController, :new
+    post "/users/register", UserRegistrationController, :create
+    get "/users/log_in", UserSessionController, :new
+    post "/users/log_in", UserSessionController, :create
+    get "/users/reset_password", UserResetPasswordController, :new
+    post "/users/reset_password", UserResetPasswordController, :create
+    get "/users/reset_password/:token", UserResetPasswordController, :edit
+    put "/users/reset_password/:token", UserResetPasswordController, :update
+  end
+
+  scope "/auth", FlorindaCtl.Auth, as: :auth do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/users/settings", UserSettingsController, :edit
+    put "/users/settings", UserSettingsController, :update
+    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+  end
+
+  scope "/auth", FlorindaCtl.Auth, as: :auth do
+    pipe_through [:browser]
+
+    delete "/users/log_out", UserSessionController, :delete
+    get "/users/confirm", UserConfirmationController, :new
+    post "/users/confirm", UserConfirmationController, :create
+    get "/users/confirm/:token", UserConfirmationController, :edit
+    post "/users/confirm/:token", UserConfirmationController, :update
   end
 
   # Other scopes may use custom stacks.

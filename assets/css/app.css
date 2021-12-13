@@ -9,3 +9,11 @@ body {
 tbody.td-p0 td {
   @apply p-0;
 }
+
+[x-cloak] {
+  @apply hidden
+}
+
+.grecaptcha-badge {
+  @apply hidden;
+}

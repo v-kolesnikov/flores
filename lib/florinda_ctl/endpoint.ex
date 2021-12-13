@@ -6,7 +6,9 @@ defmodule FlorindaCtl.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_florinda_key",
+    secure: true,
+    same_site: "Lax",
+    key: "_florinda_ctl_key",
     signing_salt: "js1KoWnQ"
   ]
 
@@ -20,7 +22,7 @@ defmodule FlorindaCtl.Endpoint do
     at: "/",
     from: :florinda,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    only: ~w(assets js fonts images favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

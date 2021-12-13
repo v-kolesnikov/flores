@@ -33,6 +33,7 @@ defmodule Florinda.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:argon2_elixir, "~> 2.0"},
       {:phoenix, "~> 1.6.2"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
@@ -53,7 +54,9 @@ defmodule Florinda.MixProject do
       {:money, "~> 1.9"},
       {:ex_cldr_numbers, "~> 2.0"},
       {:timex, "~> 3.0"},
-      {:quarto, "~> 1.1"}
+      {:quarto, "~> 1.1"},
+      {:httpoison, "~> 1.8"},
+      {:dotenvy, "~> 0.5.0"},
     ]
   end
 

@@ -43,6 +43,6 @@ jobs:
     - name: Complile
       run: mix compile
     - name: Run tests
-      run: mix test
+      run: mix test --cover
       env:
         DATABASE_URL: postgres://postgres:postgres@localhost:5432/florinda_test
